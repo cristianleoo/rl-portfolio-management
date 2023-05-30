@@ -49,7 +49,7 @@ class DataSrc(object):
         # dataframe to matrix
         self.asset_names = df.columns.levels[0].tolist()
         self.features = df.columns.levels[1].tolist()
-        data = df.as_matrix().reshape(
+        data = df.values.reshape(
             (len(df), len(self.asset_names), len(self.features)))
         self._data = np.transpose(data, (1, 0, 2))
         self._times = df.index
